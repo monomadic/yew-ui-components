@@ -1,0 +1,8 @@
+[package]
+name = "yew-defi-components"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+yew = { git = "https://github.com/yewstack/yew", features=["csr"] }
+yew-hooks = { git = "https://github.com/jetli/yew-hooks" }
