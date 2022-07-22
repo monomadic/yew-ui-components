@@ -28,17 +28,19 @@ impl Component for Modal {
                 {
                     if props.is_open {
                         html! {
-                            <div class="yew-default-modal">
-                                <div class="header">
-                                    { props.header.clone() }
-                                </div>
+                            <div class="yew-modal">
+                                <div class="yew-modal-content">
+                                    <div class="header">
+                                        { props.header.clone() }
+                                    </div>
 
-                                <div class="body">
-                                    { props.body.clone() }
-                                </div>
+                                    <div class="body">
+                                        { props.body.clone() }
+                                    </div>
 
-                                <div class="footer">
-                                    { props.footer.clone() }
+                                    <div class="footer">
+                                        { props.footer.clone() }
+                                    </div>
                                 </div>
                             </div>
                         }
