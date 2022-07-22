@@ -55,7 +55,7 @@ fn App() -> Html {
                 <button {onclick}>{ (*show_modal_title).clone() }</button>
             </div>
 
-            <Modal />
+            <Modal is_open={(*is_open).clone()} />
         </div>
     }
 }

@@ -1,7 +1,9 @@
 use yew::{Component, Context, html, Html, Properties};
 
 #[derive(Default, PartialEq, Properties)]
-pub struct Props;
+pub struct Props {
+    pub is_open: bool,
+}
 
 pub struct Modal;
 
@@ -10,14 +12,28 @@ impl Component for Modal {
     type Properties = Props;
 
     fn create(_ctx: &Context<Self>) -> Self {
-        Modal
+        Self
     }
 
-    fn view(&self, _ctx: &Context<Self>) -> Html {
+    fn view(&self, ctx: &Context<Self>) -> Html {
         html! {
-            <div>
-                { "modal" }
-            </div>
+            <>
+                {
+                    if ctx.props().is_open {
+                        html! {
+                            <div>
+                                <div class="header"> {"Header"} </div>
+                                <div class="body"> {"Body"} </div>
+                                <div class="footer"> {"Footer"} </div>
+                            </div>
+                        }
+                    } else {
+                        html! {
+                            <></>
+                        }
+                    }
+                }
+            </>
         }
     }
 }
