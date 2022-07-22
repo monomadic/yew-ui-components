@@ -3,6 +3,12 @@ use yew::{Component, Context, html, Html, Properties};
 #[derive(Default, PartialEq, Properties)]
 pub struct Props {
     pub is_open: bool,
+    #[prop_or(html!{<></>})]
+    pub header: Html,
+    #[prop_or(html!{<></>})]
+    pub body: Html,
+    #[prop_or(html!{<></>})]
+    pub footer: Html,
 }
 
 pub struct Modal;
@@ -16,15 +22,24 @@ impl Component for Modal {
     }
 
     fn view(&self, ctx: &Context<Self>) -> Html {
+        let props = ctx.props();
         html! {
             <>
                 {
-                    if ctx.props().is_open {
+                    if props.is_open {
                         html! {
-                            <div>
-                                <div class="header"> {"Header"} </div>
-                                <div class="body"> {"Body"} </div>
-                                <div class="footer"> {"Footer"} </div>
+                            <div class="yew-default-modal">
+                                <div class="header">
+                                    { props.header.clone() }
+                                </div>
+
+                                <div class="body">
+                                    { props.body.clone() }
+                                </div>
+
+                                <div class="footer">
+                                    { props.footer.clone() }
+                                </div>
                             </div>
                         }
                     } else {
