@@ -44,7 +44,9 @@ fn App() -> Html {
     };
 
     let body = html! {
-        <div>{ "body content" }</div>
+        <div>
+            <SelectItem<String> {onselect} {items} />
+        </div>
     };
 
     let footer = html! {
@@ -55,11 +57,11 @@ fn App() -> Html {
 
     html! {
         <div>
-            <SelectItem<String> {onselect} {items} />
-            <br />
+
+
             {"selected item: "}
             { (*selected_item).clone() }
-
+            <br />
             <div>
                 <button {onclick}>{ (*show_modal_title).clone() }</button>
             </div>
