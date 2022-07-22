@@ -32,17 +32,15 @@ fn App() -> Html {
         let show_modal_title = show_modal_title.clone();
         let is_open = is_open.clone();
         Callback::from(move |_| {
-            ({
-                let is_open = is_open.clone();
-                let show_modal_title = show_modal_title.clone();
-                if (*is_open).clone() {
-                    show_modal_title.set(String::from("Show Modal"));
-                    is_open.set(false);
-                } else {
-                    show_modal_title.set(String::from("Hide Modal"));
-                    is_open.set(true);
-                }
-            })
+            let is_open = is_open.clone();
+            let show_modal_title = show_modal_title.clone();
+            if (*is_open).clone() {
+                show_modal_title.set(String::from("Show Modal"));
+                is_open.set(false);
+            } else {
+                show_modal_title.set(String::from("Hide Modal"));
+                is_open.set(true);
+            }
         })
     };
 

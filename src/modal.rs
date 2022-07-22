@@ -1,4 +1,4 @@
-use yew::{Component, Context, html, Html, Properties};
+use yew::{html, Component, Context, Html, Properties};
 
 #[derive(Default, PartialEq, Properties)]
 pub struct Props {

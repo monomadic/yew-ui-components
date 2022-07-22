@@ -1,5 +1,5 @@
 use yew::prelude::*;
-use yew_ui_components::{Item, SelectItem};
+use yew_ui_components::{Item, Modal, SelectItem};
 
 #[function_component]
 fn App() -> Html {
@@ -28,9 +28,8 @@ fn App() -> Html {
         let show_modal_title = show_modal_title.clone();
         let is_open = is_open.clone();
         Callback::from(move |_| {
-            let is_open = is_open.clone();
             let show_modal_title = show_modal_title.clone();
-            if (*is_open).clone() {
+            if *is_open {
                 show_modal_title.set(String::from("Show Modal"));
                 is_open.set(false);
             } else {
@@ -39,6 +38,20 @@ fn App() -> Html {
             }
         })
     };
+
+    let header = html! {
+        <div>{ "header content" }</div>
+    };
+
+    let body = html! {
+        <div>{ "body content" }</div>
+    };
+
+    let footer = html! {
+        <div>{ "footer content" }</div>
+    };
+
+    let is_open: bool = *is_open.clone();
 
     html! {
         <div>
@@ -51,7 +64,7 @@ fn App() -> Html {
                 <button {onclick}>{ (*show_modal_title).clone() }</button>
             </div>
 
-            <Modal is_open={(*is_open).clone()} {header} {body} {footer} />
+            <Modal {is_open} {header} {body} {footer} />
         </div>
     }
 }
