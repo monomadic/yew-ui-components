@@ -1,9 +1,5 @@
-use crate::select_item::{Item, SelectItem};
-use crate::modal::Modal;
 use yew::prelude::*;
-
-mod select_item;
-mod modal;
+use yew_ui_components::{Item, SelectItem};
 
 #[function_component]
 fn App() -> Html {
@@ -27,10 +23,11 @@ fn App() -> Html {
             selected_item.set(item);
         })
     };
+
     let onclick = {
         let show_modal_title = show_modal_title.clone();
         let is_open = is_open.clone();
-        Callback::from( move |_| ({
+        Callback::from(move |_| {
             let is_open = is_open.clone();
             let show_modal_title = show_modal_title.clone();
             if (*is_open).clone() {
@@ -40,9 +37,8 @@ fn App() -> Html {
                 show_modal_title.set(String::from("Hide Modal"));
                 is_open.set(true);
             }
-        }))
+        })
     };
-    
 
     html! {
         <div>
@@ -54,8 +50,6 @@ fn App() -> Html {
             <div>
                 <button {onclick}>{ (*show_modal_title).clone() }</button>
             </div>
-
-            <Modal is_open={(*is_open).clone()} />
         </div>
     }
 }
