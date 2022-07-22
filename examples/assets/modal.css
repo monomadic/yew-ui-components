@@ -1,34 +1,58 @@
-    .yew-modal {
-        position: fixed;
-        overflow: auto;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: rgb(0 0 0 / 60%);
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        padding: 30px;
-    }
+* {
+    box-sizing: border-box;
+}
 
-    .yew-modal-content {
-        background: #ffffff;
-        padding: 15px 30px;
-        border-radius: 5px;
-    }
+.yew-modal {
+    position: fixed;
+    overflow: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgb(0 0 0 / 60%);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
 
-    .header {
-        padding: 5px;
-        border-bottom: 1px solid black;
-    }
+.yew-modal-content {
+    background: #ffffff;
+    border-radius: 5px;
+}
 
-    .body {
-        padding: 5px;
-    }
+.header {
+    padding: 15px 30px;
+}
 
-    .footer {
-        padding: 5px;
-        border-top: 1px solid black;
-    }
+.body {
+    padding: 15px 30px;
+    border-bottom: 1px solid #edeef2;
+    border-top: 1px solid #edeef2;
+
+}
+
+.footer {
+    padding: 20px;
+}
+
+.close-modal {
+    cursor: pointer;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.header-title {
+    box-sizing: border-box;
+    margin: 0px;
+    min-width: 0px;
+    font-weight: bold;
+    font-size: 16px;
+}
