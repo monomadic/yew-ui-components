@@ -43,6 +43,17 @@ fn App() -> Html {
         }))
     };
     
+    let header =  html! {
+        <div>{ "header content" }</div>
+    };
+
+    let body =  html! {
+        <div>{ "body content" }</div>
+    };
+
+    let footer =  html! {
+        <div>{ "footer content" }</div>
+    };
 
     html! {
         <div>
@@ -55,7 +66,7 @@ fn App() -> Html {
                 <button {onclick}>{ (*show_modal_title).clone() }</button>
             </div>
 
-            <Modal is_open={(*is_open).clone()} />
+            <Modal is_open={(*is_open).clone()} {header} {body} {footer} />
         </div>
     }
 }
