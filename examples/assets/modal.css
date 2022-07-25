@@ -21,18 +21,18 @@
     border-radius: 5px;
 }
 
-.header {
+.yew-modal-header {
     padding: 15px 30px;
 }
 
-.body {
+.yew-modal-body {
     padding: 15px 30px;
     border-bottom: 1px solid #edeef2;
     border-top: 1px solid #edeef2;
 
 }
 
-.footer {
+.yew-modal-footer {
     width: 100%;
     border-radius: 0px 0px 20px 20px;
     padding: 20px;
@@ -40,7 +40,7 @@
     border-top: 1px solid rgb(237, 238, 242);
 }
 
-.close-modal {
+.yew-modal-close-button {
     cursor: pointer;
 }
 
@@ -53,7 +53,7 @@
     justify-content: space-between;
 }
 
-.header-title {
+.yew-modal-header-title {
     box-sizing: border-box;
     margin: 0px;
     min-width: 0px;
