@@ -42,7 +42,7 @@ impl Component for Modal {
         }
     }
 
-    fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
+    fn update(&mut self, ctx: &Context<Self>, msg: Self::Message) -> bool {
         match msg {
             Msg::CloseModal() => {
                 self.is_open = false;
@@ -63,44 +63,34 @@ impl Component for Modal {
         let close_modal = link.callback(|_| Msg::CloseModal());
         html! {
             <>
-                {
-                    if self.is_open {
-                        html! {
-                            <div class="yew-modal">
-                                <div class="yew-modal-content">
-                                    <div class={ "yew-modal-header ".to_string() + &props.header_class }>
-                                        {
-                                            if props.modal_title.clone() != String::from("") {
-                                                html! {
-                                                    <div class="row justify-content-between">
-                                                        <div class="yew-modal-header-title">
-                                                            { props.modal_title.clone() }
-                                                        </div>
-                                                        <svg onclick={close_modal} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="yew-modal-close-button"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-                                                    </div>
-                                                }
-                                            } else {
-                                                props.header.clone()
-                                            }
-                                        }
-                                    </div>
+                <div class={if self.is_open { "yew-modal" } else { "yew-modal display-none" }}>
+                    <div class="yew-modal-content">
+                        <div class={ "yew-modal-header ".to_string() + &props.header_class }>
+                            {
+                                if props.modal_title.clone() != String::from("") {
+                                    html! {
+                                        <div class="row justify-content-between">
+                                            <div class="yew-modal-header-title">
+                                                { props.modal_title.clone() }
+                                            </div>
+                                            <svg onclick={close_modal} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="yew-modal-close-button"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                        </div>
+                                    }
+                                } else {
+                                    props.header.clone()
+                                }
+                            }
+                        </div>
 
-                                    <div class={ "yew-modal-body ".to_string() + &props.body_class }>
-                                        { props.body.clone() }
-                                    </div>
+                        <div class={ "yew-modal-body ".to_string() + &props.body_class }>
+                            { props.body.clone() }
+                        </div>
 
-                                    <div class={ "yew-modal-footer ".to_string() + &props.footer_class }>
-                                        { props.footer.clone() }
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                    } else {
-                        html! {
-                            <></>
-                        }
-                    }
-                }
+                        <div class={ "yew-modal-footer ".to_string() + &props.footer_class }>
+                            { props.footer.clone() }
+                        </div>
+                    </div>
+                </div>
             </>
         }
     }

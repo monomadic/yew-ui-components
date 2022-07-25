@@ -75,6 +75,7 @@ fn App() -> Html {
             </div>
 
             <Modal {is_open} {modal_title} {body} {footer} />
+            // <Modal is_open={true} />
         </div>
     }
 }
