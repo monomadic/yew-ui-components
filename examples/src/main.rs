@@ -47,11 +47,7 @@ fn App() -> Html {
     //     })
     // };
 
-    let modal_title = html! {
-        <div>
-            {"Select a token"}
-        </div>
-    };
+    let modal_title = String::from("Modal title");
 
     let body = html! {
         <div>
