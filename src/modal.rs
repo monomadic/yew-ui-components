@@ -7,14 +7,22 @@ pub enum Msg {
 #[derive(Default, PartialEq, Properties)]
 pub struct Props {
     pub is_open: bool,
-    #[prop_or(html!{<></>})]
-    pub header: Html,
+    #[prop_or(String::from(""))]
+    pub modal_class: String,
     #[prop_or(html!{<></>})]
     pub modal_title: Html,
     #[prop_or(html!{<></>})]
+    pub header: Html,
+    #[prop_or(String::from(""))]
+    pub header_class: String,
+    #[prop_or(html!{<></>})]
     pub body: Html,
+    #[prop_or(String::from(""))]
+    pub body_class: String,
     #[prop_or(html!{<></>})]
     pub footer: Html,
+    #[prop_or(String::from(""))]
+    pub footer_class: String,
 }
 
 pub struct Modal {
