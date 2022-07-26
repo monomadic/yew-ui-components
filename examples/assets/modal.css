@@ -16,6 +16,10 @@
     justify-content: center;
 }
 
+.display-none {
+    display: none;
+}
+
 .yew-modal-content {
     background: #ffffff;
     border-radius: 5px;
