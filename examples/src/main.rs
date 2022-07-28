@@ -62,11 +62,9 @@ fn App() -> Html {
     };
 
     let is_open: bool = *is_open.clone();
-
+    let modal_id: String = String::from("Modal_1");
     html! {
         <div>
-
-
             {"selected item: "}
             { (*selected_item).clone() }
             <br />
@@ -74,8 +72,7 @@ fn App() -> Html {
                 <button {onclick}>{ (*show_modal_title).clone() }</button>
             </div>
 
-            <Modal {is_open} {modal_title} {body} {footer} />
-            // <Modal is_open={true} />
+            <Modal {is_open} {modal_title} {body} {footer} id={modal_id} />
         </div>
     }
 }
