@@ -29,7 +29,6 @@ fn App() -> Html {
     // };
 
     let onclick = {
-        let show_modal_title = show_modal_title.clone();
         let is_open = is_open.clone();
         Callback::from(move |_| {
             is_open.set(true);

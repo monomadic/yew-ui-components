@@ -50,6 +50,7 @@ impl Component for Modal {
     type Properties = Props;
 
     fn create(_ctx: &Context<Self>) -> Self {
+        log::info!("create : {:?}", _ctx.props().is_open);
         Self {
             is_open: _ctx.props().is_open,
         }
@@ -59,22 +60,22 @@ impl Component for Modal {
         match msg {
             Msg::CloseModal() => {
                 self.is_open = false;
+                // _ctx.props().is_open = false;
+                log::info!("update : {:?}", _ctx.props().is_open);
             }
         };
         true
     }
 
     fn changed(&mut self, ctx: &Context<Self>) -> bool {
-        log::info!("self.is_open : {:?}", ctx.props().is_open);
+        log::info!("changed : {:?}", ctx.props().is_open);
 
         self.is_open = ctx.props().is_open;
         true
     }
-
     fn view(&self, ctx: &Context<Self>) -> Html {
         let props = ctx.props();
         let link = ctx.link();
-        // self.is_open = props.is_open;
         log::info!("self.is_open : {:?}", self.is_open);
         let close_modal = link.callback(|_| Msg::CloseModal());
 
