@@ -73,7 +73,7 @@ impl Component for Modal {
         let props = ctx.props();
         let link = ctx.link();
         // self.is_open = props.is_open;
-
+        log::info("fdksjfdlks");
         let close_modal = link.callback(|_| Msg::CloseModal());
 
         html! {
