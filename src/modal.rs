@@ -65,6 +65,8 @@ impl Component for Modal {
     }
 
     fn changed(&mut self, ctx: &Context<Self>) -> bool {
+        log::info!("self.is_open : {:?}", ctx.props().is_open);
+
         self.is_open = ctx.props().is_open;
         true
     }
@@ -73,7 +75,7 @@ impl Component for Modal {
         let props = ctx.props();
         let link = ctx.link();
         // self.is_open = props.is_open;
-        log::info("fdksjfdlks");
+        log::info!("self.is_open : {:?}", self.is_open);
         let close_modal = link.callback(|_| Msg::CloseModal());
 
         html! {

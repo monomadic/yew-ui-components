@@ -733,6 +733,7 @@ dependencies = [
 name = "yew-ui-components"
 version = "0.1.0"
 dependencies = [
+ "log",
  "wasm-logger",
  "yew",
  "yew-hooks",

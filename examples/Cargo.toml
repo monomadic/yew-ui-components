@@ -6,4 +6,5 @@ edition = "2021"
 [dependencies]
 yew = { git = "https://github.com/yewstack/yew" }
 yew-ui-components = { path = ".." }
+log = "0.4.6"
 wasm-logger = "0.2.0"
