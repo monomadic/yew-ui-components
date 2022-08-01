@@ -1,4 +1,4 @@
-use yew::{classes, html, Component, Context, Html, Properties};
+use yew::{classes, html, Callback, Component, Context, Html, Properties};
 
 pub enum Msg {
     CloseModal(),
@@ -6,6 +6,8 @@ pub enum Msg {
 
 #[derive(Default, PartialEq, Properties)]
 pub struct Props {
+    pub close_modal: Callback<bool>,
+
     #[prop_or(String::from(""))]
     pub id: String,
     #[prop_or(String::from(""))]
@@ -56,12 +58,13 @@ impl Component for Modal {
         }
     }
 
-    fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
+    fn update(&mut self, ctx: &Context<Self>, msg: Self::Message) -> bool {
         match msg {
             Msg::CloseModal() => {
+                let cb = ctx.props().close_modal.clone();
                 self.is_open = false;
-                // _ctx.props().is_open = false;
-                log::info!("update : {:?}", _ctx.props().is_open);
+                cb.emit(false);
+                log::info!("update : {:?}", ctx.props().is_open);
             }
         };
         true
@@ -77,8 +80,8 @@ impl Component for Modal {
         let props = ctx.props();
         let link = ctx.link();
         log::info!("self.is_open : {:?}", self.is_open);
+        // let close_modal = link.callback(|_| Msg::CloseModal());
         let close_modal = link.callback(|_| Msg::CloseModal());
-
         html! {
             <>
                 <div id={ props.id.clone() } class={classes!("yew-modal", props.class_name.clone(), if self.is_open { "" } else { "display-none" })}>

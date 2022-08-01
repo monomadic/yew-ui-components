@@ -61,6 +61,14 @@ fn App() -> Html {
 
     let is_open: bool = *is_open.clone();
     let modal_id: String = String::from("Modal_1");
+
+    let close_modal: Callback<_> = {
+        let is_open = is_open.clone();
+        Callback::from(move |item| {
+            is_open.set(false);
+        })
+    };
+
     html! {
         <div>
             {"selected item: "}
@@ -70,7 +78,7 @@ fn App() -> Html {
                 <button {onclick}>{ (*show_modal_title).clone() }</button>
             </div>
 
-            <Modal {is_open} {modal_title} id={modal_id} />
+            <Modal {is_open} {close_modal} {modal_title} id={modal_id} />
         </div>
     }
 }
